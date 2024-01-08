@@ -111,60 +111,60 @@ local function optimizeCWTNGroup()
     Write.Info('\a-gOptimizing group.')
     -- Slow. Prioritize SHM.
     if SHAMAN == 1 and ENCHANTER == 1 then
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm useslow on')
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[ENC]}) /enc useslow off')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm useslow on nosave')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[ENC]}) /enc useslow off nosave')
         Write.Info('\awSLOW: \a-gSlow activated on SHM. Slow deactivated on ENC.')
     elseif SHAMAN == 1 and ENCHANTER == 0 then
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm useslow on')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm useslow on nosave')
         Write.Info('\awSLOW: \a-gNo ENC. Slow activated on SHM.')
     elseif SHAMAN == 0 and ENCHANTER == 1 then
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[ENC]}) /enc useslow on')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[ENC]}) /enc useslow on nosave')
         Write.Info('\awSLOW: \a-gNo SHM. Slow activated on ENC.')
     else
         Write.Info('\awSLOW: \a-gNo ENC nor SHM in group.')
     end
     -- DS. Prioritize MAG.
     if MAGICIAN == 1 and DRUID == 1 then
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[MAG]}) /mag useds on')
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[DRU]}) /dru use off')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[MAG]}) /mag useds on nosave')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[DRU]}) /dru use off nosave')
         Write.Info('\awDS: \a-gDS activated on MAG. DS deactivated on DRU.')
     elseif MAGICIAN == 1 and DRUID == 0 then
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[MAG]}) /mag useds on')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[MAG]}) /mag useds on nosave')
         Write.Info('\awDS: \a-gNo DRU. DS activated on MAG.')
     elseif MAGICIAN == 0 and DRUID == 1 then
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[DRU]}) /dru useds on')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[DRU]}) /dru useds on nosave')
         Write.Info('\awDS: \a-gNo MAG. DS activated on DRU.')
     else
         Write.Info('\awDS: \a-gNo MAG nor DRU in group.')
     end
     -- Growth. Prioritize SHM.
     if SHAMAN == 1 and DRUID == 1 then
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm usegrowth on')
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[DRU]}) /dru usegrowth off')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm usegrowth on nosave')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[DRU]}) /dru usegrowth off nosave')
         Write.Info('\awGROWTH: \a-gGrowth activated on SHM. Growth deactivated on DRU.')
     elseif SHAMAN == 1 and DRUID == 0 then
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm usegrowth on')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm usegrowth on nosave')
         Write.Info('\awGROWTH: \a-gNo DRU. Growth activated on SHM.')
     elseif SHAMAN == 0 and DRUID == 1 then
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[DRU]}) /dru usegrowth on')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[DRU]}) /dru usegrowth on nosave')
         Write.Info('\awGROWTH: \a-gNo SHM. Growth activated on DRU.')
     else
         Write.Info('\awGROWTH: \a-gNo SHM nor DRU in group.')
     end
     -- Malo. Prioritize MAG.
     if SHAMAN == 1 and MAGICIAN == 1 then
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm usemalo off')
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm usemaloaoe off')
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[MAG]}) /mag usemalo on')
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[MAG]}) /mag usemaloaoe on')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm usemalo off nosave')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm usemaloaoe off nosave')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[MAG]}) /mag usemalo on nosave')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[MAG]}) /mag usemaloaoe on nosave')
         Write.Info('\awMALO: \a-gMalo/Malo AOE activated on MAG. Malo/Malo AOE deactivated on SHM.')
     elseif SHAMAN == 1 and MAGICIAN == 0 then
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm usemalo on')
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm usemaloaoe on')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm usemalo on nosave')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm usemaloaoe on nosave')
         Write.Info('\awMALO: \a-gNo MAG. Malo/Malo AOE activated on SHM.')
     elseif SHAMAN == 0 and MAGICIAN == 1 then
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[MAG]}) /mag usemalo on')
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[MAG]}) /mag usemaloaoe on')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[MAG]}) /mag usemalo on nosave')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[MAG]}) /mag usemaloaoe on nosave')
         Write.Info('\awMALO: \a-gNo SHM. Malo/Malo AOE activated on MAG.')
     else
         Write.Info('\awMALO: \a-gNo MAG nor SHM in group.')
