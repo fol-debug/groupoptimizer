@@ -29,63 +29,79 @@ WARRIOR = 0
 WIZARD = 0
 
 local groupClasses = {
-    mq.TLO.Group.Member(0).Class.ShortName(),
-    mq.TLO.Group.Member(1).Class.ShortName(),
-    mq.TLO.Group.Member(2).Class.ShortName(),
-    mq.TLO.Group.Member(3).Class.ShortName(),
-    mq.TLO.Group.Member(4).Class.ShortName(),
-    mq.TLO.Group.Member(5).Class.ShortName()
+    mq.TLO.Group.Member(0),
+    mq.TLO.Group.Member(1),
+    mq.TLO.Group.Member(2),
+    mq.TLO.Group.Member(3),
+    mq.TLO.Group.Member(4),
+    mq.TLO.Group.Member(5)
 }
 
 local function checkClasses()
     for i,v in pairs(groupClasses) do
-        if v == "BRD" then
+        if v.Class.ShortName() == "BRD" then
             BARD = 1
+            BARDLEVEL = v.Level()
         end
-        if v == "BST" then
+        if v.Class.ShortName() == "BST" then
             BEASTLORD = 1
+            BEASTLORDLEVEL = v.Level()
         end
-        if v == "BER" then
+        if v.Class.ShortName() == "BER" then
             BERSERKER = 1
+            BERSERKERLEVEL = v.Level()
         end
-        if v == "CLR" then
+        if v.Class.ShortName() == "CLR" then
             CLERIC = 1
+            CLERICLEVEL = v.Level()
         end
-        if v == "DRU" then
+        if v.Class.ShortName() == "DRU" then
             DRUID = 1
+            DRUIDLEVEL = v.Level()
         end
-        if v == "ENC" then
+        if v.Class.ShortName() == "ENC" then
             ENCHANTER = 1
+            ENCHANTERLEVEL = v.Level()
         end
-        if v == "MAG" then
+        if v.Class.ShortName() == "MAG" then
             MAGICIAN = 1
+            MAGICIANLEVEL = v.Level()
         end
-        if v == "MNK" then
+        if v.Class.ShortName() == "MNK" then
             MONK = 1
+            MONKLEVEL = v.Level()
         end
-        if v == "NEC" then
+        if v.Class.ShortName() == "NEC" then
             NECROMANCER = 1
+            NECROMANCERLEVEL = v.Level()
         end
-        if v == "PAL" then
+        if v.Class.ShortName() == "PAL" then
             PALADIN = 1
+            PALADINLEVEL = v.Level()
         end
-        if v == "RNG" then
+        if v.Class.ShortName() == "RNG" then
             RANGER = 1
+            RANGERLEVEL = v.Level()
         end
-        if v == "ROG" then
+        if v.Class.ShortName() == "ROG" then
             ROGUE = 1
+            ROGUELEVEL = v.Level()
         end
-        if v == "SHD" then
+        if v.Class.ShortName() == "SHD" then
             SHADOWKNIGHT = 1
+            SHADOWKNIGHTLEVEL = v.Level()
         end
-        if v == "SHM" then
+        if v.Class.ShortName() == "SHM" then
             SHAMAN = 1
+            SHAMANLEVEL = v.Level()
         end
-        if v == "WAR" then
+        if v.Class.ShortName() == "WAR" then
             WARRIOR = 1
+            WARRIORLEVEL = v.Level()
         end
-        if v == "WIZ" then
+        if v.Class.ShortName() == "WIZ" then
             WIZARD = 1
+            WIZARDLEVEL = v.Level()
         end
     end
 end
@@ -127,7 +143,7 @@ local function optimizeCWTNGroup()
         mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[DRU]}) /dru usegrowth off')
         Write.Info('\awGROWTH: \a-gGrowth activated on SHM. Growth deactivated on DRU.')
     elseif SHAMAN == 1 and DRUID == 0 then
-        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /mag usegrowth on')
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm usegrowth on')
         Write.Info('\awGROWTH: \a-gNo DRU. Growth activated on SHM.')
     elseif SHAMAN == 0 and DRUID == 1 then
         mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[DRU]}) /dru usegrowth on')
