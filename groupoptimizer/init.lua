@@ -137,17 +137,23 @@ local function optimizeCWTNGroup()
     else
         Write.Info('\awDS: \a-gNo MAG nor DRU in group.')
     end
-    -- Growth. Prioritize SHM.
-    if SHAMAN == 1 and DRUID == 1 then
+    -- Growth. Prioritize SHM. Deactivates if Knight in group..
+    if SHAMAN == 1 and DRUID == 1 and SHADOWKNIGHT == 0 and PALADIN == 0 then
         mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm usegrowth on nosave')
         mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[DRU]}) /dru usegrowth off nosave')
         Write.Info('\awGROWTH: \a-gGrowth activated on SHM. Growth deactivated on DRU.')
-    elseif SHAMAN == 1 and DRUID == 0 then
+    elseif SHAMAN == 1 and DRUID == 0 and SHADOWKNIGHT == 0 and PALADIN == 0 then
         mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm usegrowth on nosave')
         Write.Info('\awGROWTH: \a-gNo DRU. Growth activated on SHM.')
-    elseif SHAMAN == 0 and DRUID == 1 then
+    elseif SHAMAN == 0 and DRUID == 1 and SHADOWKNIGHT == 0 and PALADIN == 0 then
         mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[DRU]}) /dru usegrowth on nosave')
         Write.Info('\awGROWTH: \a-gNo SHM. Growth activated on DRU.')
+    elseif SHAMAN == 1 and DRUID == 0 and SHADOWKNIGHT == 1 or PALADIN == 1 then
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[SHM]}) /shm usegrowth off nosave')
+        Write.Info('\awGROWTH: \a-gKnight tank. Growth deactivated.')
+    elseif SHAMAN == 0 and DRUID == 1 and SHADOWKNIGHT == 1 or PALADIN == 1 then
+        mq.cmd('/noparse /dgga /if (${Me.Class.ShortName.Equal[DRU]}) /dru usegrowth off nosave')
+        Write.Info('\awGROWTH: \a-gKnight in group. Growth deactivated.')
     else
         Write.Info('\awGROWTH: \a-gNo SHM nor DRU in group.')
     end
