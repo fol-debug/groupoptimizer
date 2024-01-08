@@ -37,15 +37,6 @@ local groupClasses = {
     mq.TLO.Group.Member(5).Class.ShortName()
 }
 
-local function hasValue(tbl, value)
-    for i,v in pairs(tbl) do
-        if v == value then
-            return true
-        end
-    end
-    return false
-end
-
 local function checkClasses()
     for i,v in pairs(groupClasses) do
         if v == "BRD" then
