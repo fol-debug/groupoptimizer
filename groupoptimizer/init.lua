@@ -2,7 +2,7 @@
 -- Idea by: secret_wombat
 -- Written in collaboration by: EQFoli and MrInfernal
 -- Version: 0.8
--- Latest: Removed debuffs.
+-- Latest: Removed debuffs. Decomment to reactivate.
 local mq = require('mq')
 
 ---@type ImGui
